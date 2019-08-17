@@ -18,7 +18,19 @@ import 'package:drawer_master_detail/drawer_master_detail.dart';
 ## Samples
 
 ```dart
-   class _HomePageState extends State<HomePage> {
+import 'package:drawer_master_detail/drawer_master_detail.dart';
+import 'package:drawer_master_detail/model/drawer_master_item.dart';
+import 'package:example_drawer_master_detail/src/pages/page_01.dart';
+import 'package:example_drawer_master_detail/src/pages/page_02.dart';
+import 'package:example_drawer_master_detail/src/pages/page_03.dart';
+import 'package:flutter/material.dart';
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DrawerMasterDetail(      
