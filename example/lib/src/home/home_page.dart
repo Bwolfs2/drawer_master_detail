@@ -1,9 +1,10 @@
 import 'package:drawer_master_detail/drawer_master_detail.dart';
 import 'package:drawer_master_detail/model/drawer_master_item.dart';
-import 'package:example_drawer_master_detail/src/pages/page_01.dart';
-import 'package:example_drawer_master_detail/src/pages/page_02.dart';
-import 'package:example_drawer_master_detail/src/pages/page_03.dart';
 import 'package:flutter/material.dart';
+
+import '../pages/page_01.dart';
+import '../pages/page_02.dart';
+import '../pages/page_03.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -37,8 +38,19 @@ class _HomePageState extends State<HomePage> {
             item: ListTile(
               title: Text("Page 03"),
             )),
-        DrawerMasterItem.customItem(Divider(
-          color: Colors.red,
+        DrawerMasterItem.customItem(Container(
+          height: 10,
+          color: Colors.transparent,
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                child: Divider(
+                  color: Colors.grey,
+                  height: 5,
+                ),
+              ),
+            ],
+          ),
         )),
         DrawerMasterItem(
           page: Page03(),
@@ -115,7 +127,7 @@ class _HomePageState extends State<HomePage> {
           height: 50,
           alignment: Alignment.center,
           width: double.infinity,
-          color: Colors.red,
+          color: Colors.green,
           child: Text("Footer")),
       //   header: Text("Casa"),
       userAccountsDrawerHeader: UserAccountsDrawerHeader(

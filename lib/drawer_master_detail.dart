@@ -12,6 +12,7 @@ class DrawerMasterDetail extends StatefulWidget {
   final Color selectedColor;
   final Color selectedBackGroundColor;
   final Color backgroundColor;
+  final double kTabletBreakpoint;
 
   const DrawerMasterDetail(
       {Key key,
@@ -22,7 +23,8 @@ class DrawerMasterDetail extends StatefulWidget {
       this.footer,
       this.selectedColor,
       this.backgroundColor,
-      this.selectedBackGroundColor})
+      this.selectedBackGroundColor,
+      this.kTabletBreakpoint = 720.0})
       : super(key: key);
 
   @override
@@ -45,25 +47,67 @@ class _DrawerMasterDetailState extends State<DrawerMasterDetail> {
             child: CircularProgressIndicator(),
           );
         }
-
-        return Scaffold(
-            drawer: Drawer(
-              child: DrawerMaster(
-                drawerMasterItems: widget.drawerMasterItems,
-                header: widget.header,
-                userAccountsDrawerHeader: widget.userAccountsDrawerHeader,
-                footer: widget.footer,
-                selectedBackGroundColor: widget.selectedBackGroundColor,
-                selectedId: asyncSnapshot.data.id,
-                color: widget.backgroundColor,
+        return LayoutBuilder(builder: (context, boxConstraints) {
+          if (boxConstraints.maxWidth < widget.kTabletBreakpoint) {
+            print(boxConstraints.maxWidth);
+            return Scaffold(
+              drawer: Drawer(
+                child: DrawerMaster(
+                  drawerMasterItems: widget.drawerMasterItems,
+                  header: widget.header,
+                  userAccountsDrawerHeader: widget.userAccountsDrawerHeader,
+                  footer: widget.footer,
+                  selectedBackGroundColor: widget.selectedBackGroundColor,
+                  selectedId: asyncSnapshot.data.id,
+                  color: widget.backgroundColor,
+                ),
               ),
-            ),
-            appBar: asyncSnapshot.data.appBar != null
-                ? asyncSnapshot.data.appBar
-                : AppBar(
-                    title: asyncSnapshot.data.item.title,
+              appBar: asyncSnapshot.data.appBar != null
+                  ? asyncSnapshot.data.appBar
+                  : AppBar(
+                      title: asyncSnapshot.data.item.title,
+                    ),
+              body: asyncSnapshot.data.page,
+            );
+          }
+
+          return Row(
+            children: <Widget>[
+              Container(
+                width: 300,
+                decoration: BoxDecoration(
+                    border: Border(
+                  right: BorderSide(
+                    color: Colors.white,
+                    width: 1.0,
                   ),
-            body: asyncSnapshot.data.page);
+                )),
+                child: Material(
+                  elevation: 6,
+                  child: DrawerMaster(
+                    drawerMasterItems: widget.drawerMasterItems,
+                    header: widget.header,
+                    userAccountsDrawerHeader: widget.userAccountsDrawerHeader,
+                    footer: widget.footer,
+                    selectedBackGroundColor: widget.selectedBackGroundColor,
+                    selectedId: asyncSnapshot.data.id,
+                    color: widget.backgroundColor,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Scaffold(
+                  appBar: asyncSnapshot.data.appBar != null
+                      ? asyncSnapshot.data.appBar
+                      : AppBar(
+                          title: asyncSnapshot.data.item.title,
+                        ),
+                  body: asyncSnapshot.data.page,
+                ),
+              ),
+            ],
+          );
+        });
       },
     );
   }
