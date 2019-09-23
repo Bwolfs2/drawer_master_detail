@@ -1,5 +1,6 @@
 import 'package:drawer_master_detail/drawer_master_detail.dart';
 import 'package:drawer_master_detail/model/drawer_master_item.dart';
+import 'package:drawer_master_detail/model/drawer_master_item_group.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/page_01.dart';
@@ -15,8 +16,34 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DrawerMasterDetail(
-      selectedBackGroundColor: Colors.grey,
+      selectedBackGroundColor: Colors.grey.withOpacity(.5),
       drawerMasterItems: [
+        DrawerMasterItemGroup(title: Text("Top top top"), items: [
+          DrawerMasterItem(
+            page: Page01(),
+            item: ListTile(
+              title: Text("Page 01"),
+            ),
+            selectedItem: ListTile(
+              title: Text(
+                "Page 01",
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+          ),
+          DrawerMasterItem(
+            page: Page02(),
+            item: ListTile(
+              title: Text("Page 02"),
+            ),
+            selectedItem: ListTile(
+              title: Text(
+                "Page 02",
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+          ),
+        ]),
         DrawerMasterItem(
             page: Page01(),
             item: ListTile(
@@ -25,7 +52,7 @@ class _HomePageState extends State<HomePage> {
             selectedItem: ListTile(
               title: Text(
                 "Page 01",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.green),
               ),
             )),
         DrawerMasterItem(

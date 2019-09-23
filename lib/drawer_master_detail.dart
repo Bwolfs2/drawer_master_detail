@@ -6,10 +6,9 @@ import 'model/drawer_master_item.dart';
 class DrawerMasterDetail extends StatefulWidget {
   final UserAccountsDrawerHeader userAccountsDrawerHeader;
   final Widget header;
-  final List<DrawerMasterItem> drawerMasterItems;
+  final List<DrawerMasterItemAbs> drawerMasterItems;
   final DrawerMasterItem initPage;
   final Widget footer;
-  final Color selectedColor;
   final Color selectedBackGroundColor;
   final Color backgroundColor;
   final double kTabletBreakpoint;
@@ -21,7 +20,6 @@ class DrawerMasterDetail extends StatefulWidget {
       @required this.drawerMasterItems,
       @required this.initPage,
       this.footer,
-      this.selectedColor,
       this.backgroundColor,
       this.selectedBackGroundColor,
       this.kTabletBreakpoint = 720.0})

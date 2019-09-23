@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
-class DrawerMasterItem {
+class DrawerMasterItem extends DrawerMasterItemAbs{
   final Widget page;
   final ListTile item;
-  final ListTile selectedItem;
   final Widget appBar;
   bool _isCustomItem = false;
   Widget customItem;
@@ -13,10 +12,16 @@ class DrawerMasterItem {
   factory DrawerMasterItem.customItem(Widget customItem) =>
       DrawerMasterItem(customItem: customItem).._isCustomItem = true;
 
-  DrawerMasterItem(
-      {this.selectedItem, this.page, this.item, this.appBar, this.customItem}) {
+  DrawerMasterItem({selectedItem, this.page, this.item, this.appBar, this.customItem}):super(selectedItem) {
     id = Uuid().v4();
   }
 
   isCustomItem() => _isCustomItem;
+}
+
+
+abstract  class DrawerMasterItemAbs{
+   final ListTile selectedItem;
+
+  DrawerMasterItemAbs(this.selectedItem);
 }

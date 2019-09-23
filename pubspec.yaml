@@ -1,6 +1,6 @@
 name: drawer_master_detail
 description: A new Flutter package to build a Drawer like Master Detail Page of Xamarin and Android Native Drawer.
-version: 0.0.1
+version: 0.1.0
 
 authors:
 - Bwolf <bwolf@flutterando.com.br>
