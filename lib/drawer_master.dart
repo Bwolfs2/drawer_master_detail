@@ -63,7 +63,7 @@ class _DrawerMasterState extends State<DrawerMaster> {
       contentPadding: item?.contentPadding ?? null,
       dense: item?.dense ?? false,
       enabled: item?.enabled ?? true,
-       isThreeLine: item?.isThreeLine ?? false,
+      isThreeLine: item?.isThreeLine ?? false,
       key: item?.key,
       leading: item?.leading,
       subtitle: item?.subtitle,
@@ -110,7 +110,7 @@ class _DrawerMasterState extends State<DrawerMaster> {
                       : Colors.transparent,
                   child: _getList(
                     data,
-                    (data.id == widget.selectedId  && data.selectedItem != null)
+                    (data.id == widget.selectedId && data.selectedItem != null)
                         ? data.selectedItem
                         : data.item,
                   ),
