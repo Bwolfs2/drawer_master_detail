@@ -11,6 +11,8 @@ class DrawerMaster extends StatefulWidget {
   final Widget footer;
   final Color selectedBackGroundColor;
   final String selectedId;
+  final double kTabletBreakpoint;
+  final double boxConstraints;
 
   const DrawerMaster(
       {Key key,
@@ -20,7 +22,9 @@ class DrawerMaster extends StatefulWidget {
       this.color,
       this.footer,
       this.selectedBackGroundColor,
-      this.selectedId})
+      this.selectedId,
+      @required this.kTabletBreakpoint,
+      @required this.boxConstraints})
       : super(key: key);
 
   @override
@@ -47,7 +51,7 @@ class _DrawerMasterState extends State<DrawerMaster> {
             child: ListView(
               children: widget.drawerMasterItems
                   .map<Widget>(
-                    (item) => _menu(item),
+                    (item) => _menu(item, widget.boxConstraints),
                   )
                   .toList(),
             ),
@@ -58,7 +62,7 @@ class _DrawerMasterState extends State<DrawerMaster> {
     );
   }
 
-  _getList(drawerItem, item) {
+  _getList(drawerItem, item, double boxConstraints) {
     return ListTile(
       contentPadding: item?.contentPadding ?? null,
       dense: item?.dense ?? false,
@@ -71,13 +75,15 @@ class _DrawerMasterState extends State<DrawerMaster> {
       trailing: item?.trailing,
       onTap: () async {
         bloc.changeSelectedDrawerPage(drawerItem);
-        // await Future.delayed(Duration(milliseconds: 200));
-        Navigator.pop(context);
+        // await Future.delayed(Duration(milliseconds: 200));       
+        if ((widget.kTabletBreakpoint > boxConstraints)) {
+          Navigator.pop(context);
+        }
       },
     );
   }
 
-  _menu(DrawerMasterItemAbs item) {
+  _menu(DrawerMasterItemAbs item, double boxConstraints) {
     if (item is DrawerMasterItem) {
       return item.isCustomItem()
           ? item.customItem
@@ -86,11 +92,11 @@ class _DrawerMasterState extends State<DrawerMaster> {
                   ? widget.selectedBackGroundColor ?? Colors.grey
                   : Colors.transparent,
               child: _getList(
-                item,
-                (item.id == widget.selectedId && item.selectedItem != null)
-                    ? item.selectedItem
-                    : item.item,
-              ),
+                  item,
+                  (item.id == widget.selectedId && item.selectedItem != null)
+                      ? item.selectedItem
+                      : item.item,
+                  boxConstraints),
             );
     }
 
@@ -103,17 +109,17 @@ class _DrawerMasterState extends State<DrawerMaster> {
             shrinkWrap: true,
             children: item.items.map(
               (data) {
-                print(data.id == widget.selectedId);
                 return Container(
                   color: data.id == widget.selectedId
                       ? widget.selectedBackGroundColor ?? Colors.grey
                       : Colors.transparent,
                   child: _getList(
-                    data,
-                    (data.id == widget.selectedId && data.selectedItem != null)
-                        ? data.selectedItem
-                        : data.item,
-                  ),
+                      data,
+                      (data.id == widget.selectedId &&
+                              data.selectedItem != null)
+                          ? data.selectedItem
+                          : data.item,
+                      boxConstraints),
                 );
               },
             ).toList(),

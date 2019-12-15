@@ -17,6 +17,7 @@ class DrawerBloc {
   var _selectedDrawerController = BehaviorSubject<DrawerMasterItem>();
   Stream<DrawerMasterItem> get selectedDrawerPage =>
       _selectedDrawerController.stream;
+
   Function(DrawerMasterItem) get changeSelectedDrawerPage =>
       _selectedDrawerController.add;
 

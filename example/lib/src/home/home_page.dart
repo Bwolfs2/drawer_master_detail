@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
       drawerMasterItems: [
         DrawerMasterItemGroup(title: Text("Top top top"), items: [
           DrawerMasterItem(
-            page: Page01(),
+            page: () => Page01(),
             item: ListTile(
               title: Text("Page 01"),
             ),
@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           DrawerMasterItem(
-            page: Page02(),
+            page: () => Page02(),
             item: ListTile(
               title: Text("Page 02"),
             ),
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ]),
         DrawerMasterItem(
-            page: Page01(),
+            page: () => Page01(),
             item: ListTile(
               title: Text("Page 01"),
             ),
@@ -56,12 +56,12 @@ class _HomePageState extends State<HomePage> {
               ),
             )),
         DrawerMasterItem(
-            page: Page02(),
+            page: () => Page02(),
             item: ListTile(
               title: Text("Page 02"),
             )),
         DrawerMasterItem(
-            page: Page03(),
+            page: () => Page03(),
             item: ListTile(
               title: Text("Page 03"),
             )),
@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
           ),
         )),
         DrawerMasterItem(
-          page: Page03(),
+          page: () => Page03(),
           item: ListTile(
             title: Text("Page 04"),
           ),
@@ -89,22 +89,22 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         DrawerMasterItem(
-            page: Page03(),
+            page: () => Page03(),
             item: ListTile(
               title: Text("Page 05"),
             )),
         DrawerMasterItem(
-            page: Page03(),
+            page: () => Page03(),
             item: ListTile(
               title: Text("Page 06"),
             )),
         DrawerMasterItem(
-            page: Page03(),
+            page: () => Page03(),
             item: ListTile(
               title: Text("Page 07"),
             )),
         DrawerMasterItem(
-            page: Page03(),
+            page: () => Page03(),
             item: ListTile(
               title: Text("Page 08"),
             )),
@@ -120,32 +120,32 @@ class _HomePageState extends State<HomePage> {
           ),
         )),
         DrawerMasterItem(
-            page: Page03(),
+            page: () => Page03(),
             item: ListTile(
               title: Text("Page 09"),
             )),
         DrawerMasterItem(
-            page: Page03(),
+            page: () => Page03(),
             item: ListTile(
               title: Text("Page 10"),
             )),
         DrawerMasterItem(
-            page: Page03(),
+            page: () => Page03(),
             item: ListTile(
               title: Text("Page 11"),
             )),
         DrawerMasterItem(
-            page: Page03(),
+            page: () => Page03(),
             item: ListTile(
               title: Text("Page 12"),
             )),
         DrawerMasterItem(
-            page: Page03(),
+            page: () => Page03(),
             item: ListTile(
               title: Text("Page 13"),
             )),
         DrawerMasterItem(
-            page: Page03(),
+            page: () => Page03(),
             item: ListTile(
               title: Text("Page 14"),
             )),
@@ -167,7 +167,7 @@ class _HomePageState extends State<HomePage> {
       ),
 
       initPage: DrawerMasterItem(
-          page: Page01(),
+          page: () => Page01(),
           item: ListTile(
             title: Text("Home Page"),
           )),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
 class DrawerMasterItem extends DrawerMasterItemAbs {
-  final Widget page;
+  final Function() page;
   final ListTile item;
   final Widget appBar;
   bool _isCustomItem = false;

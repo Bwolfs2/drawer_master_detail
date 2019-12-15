@@ -18,7 +18,7 @@ environment:
 
 dependencies:
   dio: ^2.1.13
-  rxdart: ^0.22.1+1
+  rxdart: ^0.23.1
   bloc_pattern: ^2.2.3
   drawer_master_detail:
     path: "../"

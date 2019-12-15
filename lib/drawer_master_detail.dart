@@ -47,25 +47,25 @@ class _DrawerMasterDetailState extends State<DrawerMasterDetail> {
         }
         return LayoutBuilder(builder: (context, boxConstraints) {
           if (boxConstraints.maxWidth < widget.kTabletBreakpoint) {
-            print(boxConstraints.maxWidth);
             return Scaffold(
               drawer: Drawer(
                 child: DrawerMaster(
-                  drawerMasterItems: widget.drawerMasterItems,
-                  header: widget.header,
-                  userAccountsDrawerHeader: widget.userAccountsDrawerHeader,
-                  footer: widget.footer,
-                  selectedBackGroundColor: widget.selectedBackGroundColor,
-                  selectedId: asyncSnapshot.data.id,
-                  color: widget.backgroundColor,
-                ),
+                    drawerMasterItems: widget.drawerMasterItems,
+                    header: widget.header,
+                    userAccountsDrawerHeader: widget.userAccountsDrawerHeader,
+                    footer: widget.footer,
+                    selectedBackGroundColor: widget.selectedBackGroundColor,
+                    selectedId: asyncSnapshot.data.id,
+                    color: widget.backgroundColor,
+                    kTabletBreakpoint: widget.kTabletBreakpoint,
+                    boxConstraints: boxConstraints.maxWidth),
               ),
               appBar: asyncSnapshot.data.appBar != null
                   ? asyncSnapshot.data.appBar
                   : AppBar(
                       title: asyncSnapshot.data.item.title,
                     ),
-              body: asyncSnapshot.data.page,
+              body: asyncSnapshot.data.page(),
             );
           }
 
@@ -76,21 +76,22 @@ class _DrawerMasterDetailState extends State<DrawerMasterDetail> {
                 decoration: BoxDecoration(
                     border: Border(
                   right: BorderSide(
-                    color: Colors.white,
+                    color: Colors.red,
                     width: 1.0,
                   ),
                 )),
                 child: Material(
                   elevation: 6,
                   child: DrawerMaster(
-                    drawerMasterItems: widget.drawerMasterItems,
-                    header: widget.header,
-                    userAccountsDrawerHeader: widget.userAccountsDrawerHeader,
-                    footer: widget.footer,
-                    selectedBackGroundColor: widget.selectedBackGroundColor,
-                    selectedId: asyncSnapshot.data.id,
-                    color: widget.backgroundColor,
-                  ),
+                      drawerMasterItems: widget.drawerMasterItems,
+                      header: widget.header,
+                      userAccountsDrawerHeader: widget.userAccountsDrawerHeader,
+                      footer: widget.footer,
+                      selectedBackGroundColor: widget.selectedBackGroundColor,
+                      selectedId: asyncSnapshot.data.id,
+                      color: widget.backgroundColor,
+                      kTabletBreakpoint: widget.kTabletBreakpoint,
+                      boxConstraints: double.infinity),
                 ),
               ),
               Expanded(
@@ -100,7 +101,7 @@ class _DrawerMasterDetailState extends State<DrawerMasterDetail> {
                       : AppBar(
                           title: asyncSnapshot.data.item.title,
                         ),
-                  body: asyncSnapshot.data.page,
+                  body: asyncSnapshot.data.page(),
                 ),
               ),
             ],

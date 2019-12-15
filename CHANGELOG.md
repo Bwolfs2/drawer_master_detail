@@ -1,3 +1,6 @@
+[0.1.3] - Health
+
+[0.1.2] - fix menu
 
 [0.1.0] - add group of items
 
