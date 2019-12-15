@@ -1,3 +1,5 @@
+[0.1.4] - Change Title to Widget
+
 [0.1.3] - Health
 
 [0.1.2] - fix menu

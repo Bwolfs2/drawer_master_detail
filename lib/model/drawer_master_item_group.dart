@@ -4,7 +4,7 @@ import 'package:uuid/uuid.dart';
 import 'drawer_master_item.dart';
 
 class DrawerMasterItemGroup extends DrawerMasterItemAbs {
-  final Text title;
+  final Widget title;
   final List<DrawerMasterItem> items;
   String id;
 
